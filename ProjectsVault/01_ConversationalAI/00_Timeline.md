@@ -7,6 +7,7 @@ Arbitrary goals for the next two weeks.
 ##### Week 1
 - Research Rasa ([[01_NLP-Rasa]]) and personal trained NLP model. (**4 hours**)
 - Research modular design for building frontend on different platforms.
+- **Separate Task from Project**: Learn Git.
 - Decide on needed elements inside of the web app.
 - Prepare dataset for NLP model.
 - Train basic models for testing and performance purposes
@@ -16,4 +17,6 @@ Arbitrary goals for the next two weeks.
 - Finalize documentation.
 
 ### Progress
-##### Week 1: Monday, January 20th, 2025 - Monday, February 10th, 2025
+#### Monday, January 20th, 2025 - Monday, February 10th, 2025
+##### Week 1
+
