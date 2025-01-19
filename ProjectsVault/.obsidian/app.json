@@ -1,0 +1,10 @@
+{
+  "showInlineTitle": false,
+  "showRibbon": true,
+  "attachmentFolderPath": "Attachments",
+  "livePreview": true,
+  "defaultViewMode": "preview",
+  "readableLineLength": true,
+  "foldHeading": true,
+  "alwaysUpdateLinks": true
+}

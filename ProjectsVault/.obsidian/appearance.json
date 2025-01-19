@@ -1,0 +1,8 @@
+{
+  "cssTheme": "Spectrum",
+  "theme": "system",
+  "accentColor": "#ad5858",
+  "baseFontSize": 16,
+  "showViewHeader": true,
+  "nativeMenus": false
+}
