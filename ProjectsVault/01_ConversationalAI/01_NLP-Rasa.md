@@ -94,3 +94,52 @@ In the context of a Rasa project, there are multiple different types of data:
 	- If no existing group fits, add a new one.
 	- At given intervals, go through your groups and combine or separate them as needed.
 	- Start with 2-3 passes through your dataset.
+
+### Entities
+
+Entities are structured pieces of information inside of a user message. It can be any important detail that your assistant could use later in a conversation (memory).
+
+#### Key points
+- Training data for entity extraction should be include in the NLU.yml file.
+- Three _methods_ for entity extraction
+	- Using pre-built models (_Duckling, SpaCy_). The models have to be referenced in order to be used.
+	- Using _Regex_, for entities that match a specific pattern. For entities that follow a deterministic pattern. Do not forget to name the entity the same as the Regex pattern.
+	- Using _Machine Learning_, you will need training data for better results. Rasa comes with a few machine learning models (Rasa's DIETClassifier).
+- The output of the entity extraction is a snippet of JSON which contains the details of: entity category, entity value, confidence levels, the component that extracted the entity.
+- _Synonyms_ can be used to map the extracted values to a single standardized value. We want extracted entity values to be normalized and mapped to a single value.
+- Two _methods_ of adding synonyms to Rasa
+	- Adding a new section "synonym" to the nlu.yml, you have to define the synonym and provide examples of how it may be referred to. 
+	- Adding the synonyms in line to your NLU training examples. You add an extra parameter "value" that will reference the value that extracted entities will have to be mapped to.
+- Synonym mapping happens after entity extraction happens. This means that you will need training data to extract entities first.
+- _Lookup tables_ are lists of words used to generate case-sensitive regular expression patterns.
+- _Entity roles and groups_ allow you to add more details to your entities.
+- _Entity roles_ allow you to define the roles of the entities of the same groups. (origin, destination)
+- _Entity groups_ allow you to put extracted entities under a specific group.
+- Entity roles can also be configured to influence the conversation flow.
+
+### Slots
+
+Slots are the assistant's memory. They enable your assistant to store important details and later use them in a specific context. Slots are defined in the domain.yml file. We have to add the slot name, slot type, a parameter that determines whether or not the slot should influence the conversation flow, and mappings.
+
+#### Key points
+- Two methods of setting slots
+	- Using _NLU_, depending on how we configure the slot mappings.
+	- Using _custom actions_ (expanded upon later)
+- Slots can be configured to influence the flow of the conversation. It has a configuration flag when setting up the slot.
+- Depending on the type of slot, the flow can be influenced by the value of the slot or whether the value of this slot is present.
+- A general rule of thumb is to configure the slots to not influence if you do not have a specific reason of why a specific slot should have an influence on how a dialogue management model works.
+- If the slots are configured to influence the flow of the conversation, you have to include them in your training stories.
+- _OR Slot values_ allow you to define lots of different situation where different slots will be set by writing less stories.
+- _Slot mappings_ allow you to define how each slot will be filled in. Slot mappings are applied after each user message. They are applied after each user message as the conversation goes.
+- _from_entity slot mapping_ fills in the slots based on the extracted entities. Fill in the slots from the entities basically. You can also add role and group constraints. We can also define intent and not_intent.
+- _from_text slot mapping_ allows you to use the text of the latest user message to fill in the slot with additional parameters such as intent.
+- _from_intent slot mapping_ is based on the predicted intents. The slot will be filled in with a predetermined value if an intent is predicted.
+- _from_trigger_intent slot mapping_ will fill a slot with a specific defined value if a form is activated by a user message with a specific intent.
+- _custom slot mapping_ if none of the predefined slot mapping fit the use case. This happens using slot validation actions.
+- _Slot type: text_ can be used to store any text information. It can influence the conversation based on whether or not the slot has been set.
+- _Slot type: Boolean_ used to store information that can get the values true or false, e.g. user authentication from user ID.
+- _Slot type: categorical_ used to store values that can get one of the possible N values.
+- _Slot type: float_ used to store numerical values.
+- _Slot type: list_ used to store a list of values. When configured, only the presence of the slot can have influence on the flow of the conversation.
+- _Slot type: any_ used to store any arbitrary values. Slots of this type do not have any influence on the conversation flow.
+- _Additional Configuration: initial_value_ sets a default initial vale to your slot by configuring the parameter.
