@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02_AC_RemoteControl/00_ProjectDescription.md",
+                "file": "02_AC_RemoteControl/01_25-01-2025.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00_ProjectDescription"
+              "title": "01_25-01-2025"
             }
           },
           {
@@ -176,10 +176,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f3451053280619c4",
+  "active": "6b893f77d384cc0a",
   "lastOpenFiles": [
-    "XX_Random/01_Katranji_Cart.md",
     "02_AC_RemoteControl/00_ProjectDescription.md",
+    "02_AC_RemoteControl/01_25-01-2025.md",
+    "XX_Random/01_Katranji_Cart.md",
     "02_AC_RemoteControl",
     "XX_Random/00_Katranji_Cart.md",
     "01_ConversationalAI/00_Timeline.md",
